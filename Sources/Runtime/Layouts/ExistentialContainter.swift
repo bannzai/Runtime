@@ -20,20 +20,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct ExistentialContainer {
+public struct ExistentialContainer {
     let buffer: ExistentialContainerBuffer
     let type: Any.Type
     let witnessTable: Int
 }
 
-struct ExistentialContainerBuffer {
+public struct ExistentialContainerBuffer {
     let buffer1: Int
     let buffer2: Int
     let buffer3: Int
 }
 
 extension ExistentialContainerBuffer {
-    static func size() -> Int {
+    static public func size() -> Int {
         return MemoryLayout<ExistentialContainerBuffer>.size
     }
 }

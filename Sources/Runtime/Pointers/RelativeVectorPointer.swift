@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct RelativeVectorPointer<Offset: FixedWidthInteger, Pointee> {
-    var offset: Offset
-    mutating func vector(metadata: UnsafePointer<Int>, n: Int) -> UnsafeBufferPointer<Pointee> {
+public struct RelativeVectorPointer<Offset: FixedWidthInteger, Pointee> {
+    public var offset: Offset
+    mutating public func vector(metadata: UnsafePointer<Int>, n: Int) -> UnsafeBufferPointer<Pointee> {
         return metadata.advanced(by: numericCast(offset))
             .raw.assumingMemoryBound(to: Pointee.self)
             .buffer(n: n)
@@ -30,7 +30,7 @@ struct RelativeVectorPointer<Offset: FixedWidthInteger, Pointee> {
 }
 
 extension RelativeVectorPointer: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return "\(offset)"
     }
 }

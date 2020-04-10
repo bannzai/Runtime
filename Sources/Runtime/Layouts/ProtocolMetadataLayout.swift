@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct ProtocolMetadataLayout: MetadataLayoutType {
-    var _kind: Int
-    var layoutFlags: Int
-    var numberOfProtocols: Int
-    var protocolDescriptorVector: UnsafeMutablePointer<ProtocolDescriptor>
+public struct ProtocolMetadataLayout: MetadataLayoutType {
+    public var _kind: Int
+    public var layoutFlags: Int
+    public var numberOfProtocols: Int
+    public var protocolDescriptorVector: UnsafeMutablePointer<ProtocolDescriptor>
 }

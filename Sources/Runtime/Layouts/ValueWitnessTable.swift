@@ -20,21 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct ValueWitnessTable {
-    var initializeBufferWithCopyOfBuffer: UnsafeRawPointer
-    var destroy: UnsafeRawPointer
-    var initializeWithCopy: UnsafeRawPointer
-    var assignWithCopy: UnsafeRawPointer
-    var initializeWithTake: UnsafeRawPointer
-    var assignWithTake: UnsafeRawPointer
-    var getEnumTagSinglePayload: UnsafeRawPointer
-    var storeEnumTagSinglePayload: UnsafeRawPointer
-    var size: Int
-    var stride: Int
-    var flags: Int
+public struct ValueWitnessTable {
+    public var initializeBufferWithCopyOfBuffer: UnsafeRawPointer
+    public var destroy: UnsafeRawPointer
+    public var initializeWithCopy: UnsafeRawPointer
+    public var assignWithCopy: UnsafeRawPointer
+    public var initializeWithTake: UnsafeRawPointer
+    public var assignWithTake: UnsafeRawPointer
+    public var getEnumTagSinglePayload: UnsafeRawPointer
+    public var storeEnumTagSinglePayload: UnsafeRawPointer
+    public var size: Int
+    public var stride: Int
+    public var flags: Int
 }
 
-struct ValueWitnessFlags {
+public struct ValueWitnessFlags {
     static let alignmentMask = 0x0000FFFF
     static let isNonPOD = 0x00010000
     static let isNonInline = 0x00020000

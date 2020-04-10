@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct FunctionMetadataLayout: MetadataLayoutType {
-    var _kind: Int
-    var flags: Int
-    var argumentVector: Vector<Any.Type>
+public struct FunctionMetadataLayout: MetadataLayoutType {
+    public var _kind: Int
+    public var flags: Int
+    public var argumentVector: Vector<Any.Type>
 }

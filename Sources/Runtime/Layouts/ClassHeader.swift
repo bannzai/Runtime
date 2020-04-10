@@ -20,15 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct ClassHeader {
-    var isaPointer: Int
-    var strongRetainCounts: Int32
-    var weakRetainCounts: Int32
+public struct ClassHeader {
+    public var isaPointer: Int
+    public var strongRetainCounts: Int32
+    public var weakRetainCounts: Int32
 }
 
 extension ClassHeader {
     
-    static func size() -> Int {
+    static public func size() -> Int {
         return MemoryLayout<ClassHeader>.size
     }
 }

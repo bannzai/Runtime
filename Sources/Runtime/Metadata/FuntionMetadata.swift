@@ -17,14 +17,17 @@
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// OUT OF OR IN CONNECTION jjjjjjjjjjjjWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct FunctionMetadata: MetadataType {
+public struct FunctionMetadata: MetadataType {
     
-    var pointer: UnsafeMutablePointer<FunctionMetadataLayout>
+    public var pointer: UnsafeMutablePointer<FunctionMetadataLayout>
+    public init(pointer: UnsafeMutablePointer<FunctionMetadataLayout>) {
+        self.pointer = pointer
+    }
     
-    func info() -> FunctionInfo {
+    public func info() -> FunctionInfo {
         let (numberOfArguments, argumentTypes, returnType) = argumentInfo()
         return FunctionInfo(numberOfArguments: numberOfArguments,
                             argumentTypes: argumentTypes,
@@ -32,7 +35,7 @@ struct FunctionMetadata: MetadataType {
                             throws: `throws`())
     }
     
-    private func argumentInfo() -> (Int, [Any.Type], Any.Type) {
+    public func argumentInfo() -> (Int, [Any.Type], Any.Type) {
         let n = numberArguments()
         let argTypeBuffer = pointer.pointee.argumentVector.vector(n: n + 1)
         
@@ -42,11 +45,11 @@ struct FunctionMetadata: MetadataType {
         return (n, argTypes, resultType)
     }
     
-    private func numberArguments() -> Int {
+    public func numberArguments() -> Int {
         return pointer.pointee.flags & 0x00FFFFFF
     }
     
-    private func `throws`() -> Bool {
+    public func `throws`() -> Bool {
         return pointer.pointee.flags & 0x01000000 != 0
     }
 }

@@ -20,11 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
+public func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
     return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
 }
 
-func metadata(of type: Any.Type) throws -> MetadataInfo {
+public func metadata(of type: Any.Type) throws -> MetadataInfo {
     
     let kind = Kind(type: type)
     
@@ -44,13 +44,13 @@ func metadata(of type: Any.Type) throws -> MetadataInfo {
     }
 }
 
-func swiftObject() -> Any.Type {
+public func swiftObject() -> Any.Type {
     class Temp {}
     let md = ClassMetadata(type: Temp.self)
     return md.pointer.pointee.superClass
 }
 
-func classIsSwiftMask() -> Int {
+public func classIsSwiftMask() -> Int {
     #if canImport(Darwin)
     if #available(macOS 10.14.4, iOS 12.2, tvOS 12.2, watchOS 5.2, *) {
         return 2

@@ -21,13 +21,13 @@
 // SOFTWARE.
 
 /// Helper for when binding to a c++ `union`
-protocol Union {
+public protocol Union {
     associatedtype Raw
     var raw: Raw { get set }
 }
 
 extension Union {
-    mutating func bind<T>() -> UnsafeMutablePointer<T> {
+    mutating public func bind<T>() -> UnsafeMutablePointer<T> {
         return withUnsafePointer(to: &self) { pointer in
             return pointer.raw.assumingMemoryBound(to: T.self).mutable
         }

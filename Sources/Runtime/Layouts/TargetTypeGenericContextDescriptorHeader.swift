@@ -20,15 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct TargetTypeGenericContextDescriptorHeader {
-    var instantiationCache: Int32
-    var defaultInstantiationPattern: Int32
-    var base: TargetGenericContextDescriptorHeader
+public struct TargetTypeGenericContextDescriptorHeader {
+    public var instantiationCache: Int32
+    public var defaultInstantiationPattern: Int32
+    public var base: TargetGenericContextDescriptorHeader
 }
 
-struct TargetGenericContextDescriptorHeader {
-    var numberOfParams: UInt16
-    var numberOfRequirements: UInt16
-    var numberOfKeyArguments: UInt16
-    var numberOfExtraArguments: UInt16
+public struct TargetGenericContextDescriptorHeader {
+    public var numberOfParams: UInt16
+    public var numberOfRequirements: UInt16
+    public var numberOfKeyArguments: UInt16
+    public var numberOfExtraArguments: UInt16
 }

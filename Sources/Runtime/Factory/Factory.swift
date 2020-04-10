@@ -49,7 +49,7 @@ public func createInstance(of type: Any.Type, constructor: ((PropertyInfo) throw
     }
 }
 
-func buildStruct(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> Any {
+public func buildStruct(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> Any {
     let info = try typeInfo(of: type)
     let pointer = UnsafeMutableRawPointer.allocate(byteCount: info.size, alignment: info.alignment)
     defer { pointer.deallocate() }
@@ -57,7 +57,7 @@ func buildStruct(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = 
     return getters(type: type).get(from: pointer)
 }
 
-func buildClass(type: Any.Type) throws -> Any {
+public func buildClass(type: Any.Type) throws -> Any {
     var md = ClassMetadata(type: type)
     let info = md.toTypeInfo()
     let metadata = unsafeBitCast(type, to: UnsafeRawPointer.self)
@@ -73,7 +73,7 @@ func buildClass(type: Any.Type) throws -> Any {
     return unsafeBitCast(value, to: AnyObject.self)
 }
 
-func setProperties(typeInfo: TypeInfo,
+public func setProperties(typeInfo: TypeInfo,
                    pointer: UnsafeMutableRawPointer,
                    constructor: ((PropertyInfo) throws -> Any)? = nil) throws {
     for property in typeInfo.properties {
@@ -87,7 +87,7 @@ func setProperties(typeInfo: TypeInfo,
     }
 }
 
-func defaultValue(of type: Any.Type) throws -> Any {
+public func defaultValue(of type: Any.Type) throws -> Any {
     
     if let constructable = type as? DefaultConstructor.Type {
         return constructable.init()

@@ -20,30 +20,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// Swift class or objc class
-struct AnyClassMetadataLayout {
-    var _kind: Int // isaPointer for classes
-    var superClass: Any.Type
-    var objCRuntimeReserve: (Int, Int)
-    var rodataPointer: Int
+// Swift public class or objc class
+public struct AnyClassMetadataLayout {
+    public var _kind: Int // isaPointer for classes
+    public var superClass: Any.Type
+    public var objCRuntimeReserve: (Int, Int)
+    public var rodataPointer: Int
     
-    var isSwiftClass: Bool {
+    public var isSwiftClass: Bool {
         return (rodataPointer & classIsSwiftMask()) != 0
     }
 }
 
-struct ClassMetadataLayout: NominalMetadataLayoutType {
-    var _kind: Int // isaPointer for classes
-    var superClass: Any.Type
-    var objCRuntimeReserve: (Int, Int)
-    var rodataPointer: Int
-    var classFlags: Int32
-    var instanceAddressPoint: UInt32
-    var instanceSize: UInt32
-    var instanceAlignmentMask: UInt16
-    var reserved: UInt16
-    var classSize: UInt32
-    var classAddressPoint: UInt32
-    var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
-    var iVarDestroyer: UnsafeRawPointer
+public struct ClassMetadataLayout: NominalMetadataLayoutType {
+    public var _kind: Int // isaPointer for classes
+    public var superClass: Any.Type
+    public var objCRuntimeReserve: (Int, Int)
+    public var rodataPointer: Int
+    public var classFlags: Int32
+    public var instanceAddressPoint: UInt32
+    public var instanceSize: UInt32
+    public var instanceAlignmentMask: UInt16
+    public var reserved: UInt16
+    public var classSize: UInt32
+    public var classAddressPoint: UInt32
+    public var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
+    public var iVarDestroyer: UnsafeRawPointer
 }

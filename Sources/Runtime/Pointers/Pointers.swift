@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-func withValuePointer<Value, Result>(
+public func withValuePointer<Value, Result>(
     of value: inout Value,
     _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
     
@@ -38,7 +38,7 @@ func withValuePointer<Value, Result>(
     }
 }
 
-func withClassValuePointer<Value, Result>(
+public func withClassValuePointer<Value, Result>(
     of value: inout Value,
     _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
     return try withUnsafePointer(to: &value) {
@@ -47,7 +47,7 @@ func withClassValuePointer<Value, Result>(
     }
 }
 
-func withExistentialValuePointer<Value, Result>(
+public func withExistentialValuePointer<Value, Result>(
     of value: inout Value,
     _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
     return try withUnsafePointer(to: &value) {

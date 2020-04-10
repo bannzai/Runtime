@@ -20,15 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-typealias FieldTypeAccessor = @convention(c) (UnsafePointer<Int>) -> UnsafePointer<Int>
+public typealias FieldTypeAccessor = @convention(c) (UnsafePointer<Int>) -> UnsafePointer<Int>
 
-struct StructTypeDescriptor: TypeDescriptor {
-    var flags: ContextDescriptorFlags
-    var parent: Int32
-    var mangledName: RelativePointer<Int32, CChar>
-    var accessFunctionPtr: RelativePointer<Int32, UnsafeRawPointer>
-    var fieldDescriptor: RelativePointer<Int32, FieldDescriptor>
-    var numberOfFields: Int32
-    var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
-    var genericContextHeader: TargetTypeGenericContextDescriptorHeader
+public struct StructTypeDescriptor: TypeDescriptor {
+    public var flags: ContextDescriptorFlags
+    public var parent: Int32
+    public var mangledName: RelativePointer<Int32, CChar>
+    public var accessFunctionPtr: RelativePointer<Int32, UnsafeRawPointer>
+    public var fieldDescriptor: RelativePointer<Int32, FieldDescriptor>
+    public var numberOfFields: Int32
+    public var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
+    public var genericContextHeader: TargetTypeGenericContextDescriptorHeader
 }

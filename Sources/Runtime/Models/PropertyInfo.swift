@@ -40,7 +40,7 @@ public struct PropertyInfo {
         }
     }
     
-    private func set(value: Any, pointer: UnsafeMutableRawPointer) throws {
+    public func set(value: Any, pointer: UnsafeMutableRawPointer) throws {
         let valuePointer = pointer.advanced(by: offset)
         let sets = setters(type: type)
         sets.set(value: value, pointer: valuePointer)

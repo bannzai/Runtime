@@ -20,15 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct AnyClassMetadata {
+public struct AnyClassMetadata {
     
-    var pointer: UnsafeMutablePointer<AnyClassMetadataLayout>
+    public var pointer: UnsafeMutablePointer<AnyClassMetadataLayout>
     
-    init(type: Any.Type) {
+    public init(type: Any.Type) {
         pointer = unsafeBitCast(type, to: UnsafeMutablePointer<AnyClassMetadataLayout>.self)
     }
     
-    func asClassMetadata() -> ClassMetadata? {
+    public func asClassMetadata() -> ClassMetadata? {
         guard pointer.pointee.isSwiftClass else {
             return nil
         }
@@ -37,21 +37,23 @@ struct AnyClassMetadata {
     }
 }
 
-struct ClassMetadata: NominalMetadataType {
-    
-    var pointer: UnsafeMutablePointer<ClassMetadataLayout>
-    
-    var hasResilientSuperclass: Bool {
+public struct ClassMetadata: NominalMetadataType {
+    public var pointer: UnsafeMutablePointer<ClassMetadataLayout>
+    public init(pointer: UnsafeMutablePointer<ClassMetadataLayout>) {
+        self.pointer = pointer
+    }
+
+    public var hasResilientSuperclass: Bool {
         let typeDescriptor = pointer.pointee.typeDescriptor
         return ((typeDescriptor.pointee.flags >> 16) & 0x2000) != 0
     }
     
-    var areImmediateMembersNegative: Bool {
+    public var areImmediateMembersNegative: Bool {
         let typeDescriptor = pointer.pointee.typeDescriptor
         return ((typeDescriptor.pointee.flags >> 16) & 0x1000) != 0
     }
     
-    var genericArgumentOffset: Int {
+    public var genericArgumentOffset: Int {
         let typeDescriptor = pointer.pointee.typeDescriptor
         
         if !hasResilientSuperclass {
@@ -75,7 +77,7 @@ struct ClassMetadata: NominalMetadataType {
         fatalError("Cannot get the `genericArgumentOffset` for classes with a resilient superclass")
     }
     
-    func superClassMetadata() -> AnyClassMetadata? {
+    public func superClassMetadata() -> AnyClassMetadata? {
         let superClass = pointer.pointee.superClass
         guard superClass != swiftObject() else {
             return nil
@@ -83,7 +85,7 @@ struct ClassMetadata: NominalMetadataType {
         return AnyClassMetadata(type: superClass)
     }
     
-    mutating func toTypeInfo() -> TypeInfo {
+    mutating public func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
         info.mangledName = mangledName()
         info.properties = properties()

@@ -22,7 +22,7 @@
 
 extension Array where Element == String {
     
-    static func from(pointer: UnsafePointer<CChar>, n: Int) -> [String] {
+    static public func from(pointer: UnsafePointer<CChar>, n: Int) -> [String] {
         var pointer = pointer
         var result = [String]()
         

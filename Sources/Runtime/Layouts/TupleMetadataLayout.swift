@@ -20,14 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct TupleMetadataLayout: MetadataLayoutType {
-    var _kind: Int
-    var numberOfElements: Int
-    var labelsString: UnsafeMutablePointer<CChar>
-    var elementVector: Vector<TupleElementLayout>
+public struct TupleMetadataLayout: MetadataLayoutType {
+    public var _kind: Int
+    public var numberOfElements: Int
+    public var labelsString: UnsafeMutablePointer<CChar>
+    public var elementVector: Vector<TupleElementLayout>
 }
 
-struct TupleElementLayout {
-    var type: Any.Type
-    var offset: Int
+public struct TupleElementLayout {
+    public var type: Any.Type
+    public var offset: Int
 }

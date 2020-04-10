@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-protocol TypeDescriptor {
+public protocol TypeDescriptor {
     
     /// The offset type can differ between TypeDescriptors
     /// e.g. Struct are an Int32 and classes are an Int
@@ -34,4 +34,4 @@ protocol TypeDescriptor {
     var genericContextHeader: TargetTypeGenericContextDescriptorHeader { get set }
 }
 
-typealias ContextDescriptorFlags = Int32
+public typealias ContextDescriptorFlags = Int32

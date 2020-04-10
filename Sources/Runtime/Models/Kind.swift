@@ -36,7 +36,7 @@ public enum Kind {
     case heapGenericLocalVariable
     case errorObject
     case `class`
-    init(flag: Int) {
+    public init(flag: Int) {
         switch flag {
         case 1: self = .struct
         case (0 | Flags.kindIsNonHeap): self = .struct
@@ -70,12 +70,12 @@ public enum Kind {
         }
     }
     
-    init(type: Any.Type) {
+    public init(type: Any.Type) {
         let pointer = metadataPointer(type: type)
         self.init(flag: pointer.pointee)
     }
     
-    struct Flags {
+    public struct Flags {
         static let kindIsNonHeap = 0x200
         static let kindIsRuntimePrivate = 0x100
         static let kindIsNonType = 0x400
